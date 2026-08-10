@@ -20,7 +20,7 @@ jobs:
       - run: npm run build
         working-directory: frontend
         env:
-          VITE_API_BASE_URL: https://tracelify-api.onrender.com
+          VITE_API_BASE_URL: https://flag-greater-exploring-species.trycloudflare.com
       - run: cp dist/index.html dist/404.html
         working-directory: frontend
       - uses: peaceiris/actions-gh-pages@v4
