@@ -52,7 +52,8 @@ function PageSkeleton() {
   );
 }
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
   // ── Landing page — public, redirect to dashboard if already logged in ──────
   { path: "/", element: <PublicOnlyRoute><Landing /></PublicOnlyRoute> },
 
@@ -111,7 +112,9 @@ const router = createBrowserRouter([
 
   // Catch-all
   { path: "*", element: <Navigate to="/" replace /> },
-]);
+],
+  { basename: import.meta.env.VITE_BASE_PATH || "/error-tracking-observability-sdk" }
+);
 
 export default function AppRouter() {
   return <RouterProvider router={router} />;

@@ -10,6 +10,7 @@ function spaBypass(req) {
 }
 
 export default defineConfig({
+  base: process.env.VITE_BASE_PATH || '/error-tracking-observability-sdk/',
   plugins: [react(), tailwindcss()],
 
   resolve: {
