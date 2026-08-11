@@ -63,7 +63,7 @@ function PythonDocs({ dsn }) {
   return (
     <div className="space-y-6">
       <DocSection icon={Terminal} title="Installation">
-        <CodeBlock lang="bash" code={`pip install tracelify`} />
+        <CodeBlock lang="bash" code={`pip install tracelify-sdk`} />
         <p className="text-[12px] text-slate-500">
           Or copy the <code className="bg-white/5 px-1 rounded text-violet-300">tracelify/</code> folder directly into your project root.
         </p>

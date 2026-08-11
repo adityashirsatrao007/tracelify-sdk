@@ -42,10 +42,17 @@ pip install tracelify-sdk
 ```python
 import tracelify
 
-tracelify.init(dsn="https://key@your-host.com/project")
+sdk = tracelify.Tracelify(
+    dsn="https://<public_key>@your-host.com/api/<project_id>/events",
+    release="1.0.0"
+)
 
-with tracelify.capture_exceptions():
-    1 / 0  # Will be captured automatically
+try:
+    1 / 0  # Unhandled exceptions are auto-captured
+except Exception as e:
+    sdk.capture_exception(e)  # Or capture explicitly
+
+sdk.flush()  # Wait for the background worker to send queued events
 ```
 
 ### Backend Setup

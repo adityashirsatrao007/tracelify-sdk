@@ -79,7 +79,7 @@ export default function DocsIndex() {
       {/* Docs */}
       <div className="rounded-xl border border-white/[0.06] bg-white/[0.015] p-6 space-y-6">
         {lang === "python" && <>
-          <Section icon={Terminal} title="Install"><CodeBlock lang="bash" code="pip install tracelify" /></Section>
+          <Section icon={Terminal} title="Install"><CodeBlock lang="bash" code="pip install tracelify-sdk" /></Section>
           <Section icon={Zap} title="Initialize">
             <CodeBlock lang="python" code={`import tracelify\nsdk = tracelify.Tracelify(dsn="${DSN}", release="1.0.0")`} />
           </Section>
