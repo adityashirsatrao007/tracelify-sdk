@@ -60,4 +60,4 @@ export const USER_STORAGE_KEY = 'tracelify_user_cache';
 export const DEFAULT_PAGE_LIMIT = 50;
 
 /** API Base URL */
-export const API_BASE_URL = 'https://tracelify-api.onrender.com';
+export const API_BASE_URL = 'https://excuse-foto-cliff-modeling.trycloudflare.com';
