@@ -30,10 +30,12 @@ class Organization(Base):
         "User", back_populates="owned_orgs", lazy="select"
     )
     members: Mapped[list[OrganizationMember]] = relationship(
-        "OrganizationMember", back_populates="org", lazy="select"
+        "OrganizationMember", back_populates="org", lazy="select",
+        cascade="all, delete-orphan", passive_deletes=True,
     )
     projects: Mapped[list[Project]] = relationship(  # noqa: F821
-        "Project", back_populates="org", lazy="select"
+        "Project", back_populates="org", lazy="select",
+        cascade="all, delete-orphan", passive_deletes=True,
     )
 
     def __repr__(self) -> str:

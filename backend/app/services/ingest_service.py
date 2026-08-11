@@ -75,12 +75,17 @@ async def enqueue_event(
     Returns the event_id. Skips duplicate event_ids to prevent replay.
     """
     if event.event_id:
-        existing = await db.execute(
-            select(Event).where(Event.event_id == event.event_id)
-        )
-        if existing.scalar_one_or_none():
-            logger.info(f"Duplicate event {event.event_id} skipped (already processed)")
-            return event.event_id
+        try:
+            event_uuid = uuid.UUID(event.event_id)
+        except ValueError:
+            event_uuid = None
+        if event_uuid:
+            existing = await db.execute(
+                select(Event).where(Event.id == event_uuid)
+            )
+            if existing.scalar_one_or_none():
+                logger.info(f"Duplicate event {event.event_id} skipped (already processed)")
+                return event.event_id
 
     payload = {
         "event_id": event.event_id,

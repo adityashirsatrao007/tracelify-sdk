@@ -35,16 +35,20 @@ class Project(Base):
         "Organization", back_populates="projects", lazy="select"
     )
     dsn_keys: Mapped[list[DsnKey]] = relationship(
-        "DsnKey", back_populates="project", lazy="select"
+        "DsnKey", back_populates="project", lazy="select",
+        cascade="all, delete-orphan", passive_deletes=True,
     )
     events: Mapped[list[Event]] = relationship(  # noqa: F821
-        "Event", back_populates="project", lazy="select"
+        "Event", back_populates="project", lazy="select",
+        cascade="all, delete-orphan", passive_deletes=True,
     )
     issues: Mapped[list[Issue]] = relationship(  # noqa: F821
-        "Issue", back_populates="project", lazy="select"
+        "Issue", back_populates="project", lazy="select",
+        cascade="all, delete-orphan", passive_deletes=True,
     )
     alert_rules: Mapped[list[AlertRule]] = relationship(  # noqa: F821
-        "AlertRule", back_populates="project", lazy="select"
+        "AlertRule", back_populates="project", lazy="select",
+        cascade="all, delete-orphan", passive_deletes=True,
     )
 
     def __repr__(self) -> str:
