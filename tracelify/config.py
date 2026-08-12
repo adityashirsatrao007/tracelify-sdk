@@ -16,7 +16,14 @@ class Config:
 
         self.protocol = parsed.scheme or "http"
         self.host = parsed.hostname or "localhost"
-        self.port = parsed.port or 8000
+        # Only default to :8000 for local dev hosts; remote hosts must use the
+        # scheme's default port (80/443) or an explicit port from the DSN.
+        if parsed.port is not None:
+            self.port = parsed.port
+        elif self.host in ("localhost", "127.0.0.1", "0.0.0.0"):
+            self.port = 8000
+        else:
+            self.port = 443 if self.protocol == "https" else 80
         self.public_key = parsed.username or "demo_key"
 
         # Path: /api/<project_id>/events  → strip leading slash, split
