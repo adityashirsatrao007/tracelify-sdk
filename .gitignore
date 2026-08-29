@@ -29,3 +29,4 @@ __pycache__/
 # Test/temp files
 backend/test_email.py
 backend/seed_alert_rule.py
+frontend/.env
